@@ -1,0 +1,9 @@
+{% extends 'home.html' %}
+{% block content %}
+{{ htmlvalue|safe }}
+{% for x in value %}
+</br>
+ your item is {{x.title|upper}} comes under categeory {{x.description}} </br>
+ price ={{x.price}}
+{% endfor %}
+{% endblock %}
