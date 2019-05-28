@@ -14,11 +14,11 @@ def Main_home_page(request):
 
 def single_value(request,id):
 
-    #try:
-     #   value=item.objects.get(pk=id)
-    #except item.DoesNotExist:
-     #   raise Http404
-    value=get_object_or_404(item,id)
+    try:
+        value=item.objects.get(pk=id)
+    except item.DoesNotExist:
+        raise Http404
+    #value=get_object_or_404(item,id)
 
     return render(request,'singleitem.html',{'x':value})
 
