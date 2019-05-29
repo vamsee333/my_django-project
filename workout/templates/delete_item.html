@@ -1,0 +1,10 @@
+{% extends 'home.html' %}
+
+{%  block content %}
+<form method="post">{% csrf_token %}
+    {{x}}
+    do you wantt to delete {{obj.title}}?
+    <input type="submit" value="delete"> <a href="../"></a>
+</form>
+
+{% endblock %}

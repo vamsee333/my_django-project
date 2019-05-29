@@ -7,4 +7,4 @@ class item(models.Model):
     price=models.DecimalField(decimal_places=2,max_digits=1000)
 
     def get_absolute_url(self):
-        return reverse('single',kwargs={'id':self.id})
+        return reverse('items:single',kwargs={'id':self.id})

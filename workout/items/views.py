@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import item
 from items.forms import Itemsform
@@ -43,3 +43,13 @@ def Using_from(request):
 def raw_form(request):
     context={}
     return render(request,'searchform.html',context)
+
+
+def delete_items(request,id):
+    obj=get_object_or_404(item,id=id)
+    if request.method=='GET':
+        x="get method"
+    if request.method=='POST':
+        obj.delete()
+        return redirect('../../home/')
+    return render(request,'delete_item.html',{'obj':obj,'x':x})
