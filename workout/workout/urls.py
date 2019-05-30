@@ -19,5 +19,7 @@ from items import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('items.urls')),
+    path('',include('classitems.urls')),
+
 
 ]

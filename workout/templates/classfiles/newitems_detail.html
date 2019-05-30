@@ -1,0 +1,8 @@
+{% extends 'home.html' %}
+{% block content %}
+<b><a href="../../update/{{object.id}}">update</a></b>&emsp;&emsp;&nbsp;<b><a href="../../deleteitem/{{object.id}}">delete</a></b> <br>
+
+ your item is {{object.title|upper}} comes under category {{object.description}} </br>
+ price ={{object.price}}
+
+{% endblock %}

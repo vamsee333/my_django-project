@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<h3><a href="../../createview/">Add Item </a><br></h3>
+
+{% for x in object_list %}
+
+  {{x.title}} with description {{x.description}} costs {{x.price}} </br>
+  <a href='{{x.get_absolute_url}}'>click to see </a><br>
+{% endfor %}
+{% endblock %}
