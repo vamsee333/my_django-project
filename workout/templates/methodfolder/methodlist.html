@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<style>
+    .p{
+    color:BLUE
+    }
+</style>
+<p class="p">click on the home to see the other products</p> <br>
+
+{% for x in object %}
+ title is {{x.title}}<br>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<style>
+    .p{
+    color:BLUE
+    }
+</style>
+<p class="p">click on the home to see the other products</p> <br>
+
+<form method="post">{% csrf_token %}
+    {{ form.as_p}}
+
+    <input type="submit" value="add">
+</form>
+click <a href="../../alltitles">here</a> to see the added item
+
+{% endblock %}
