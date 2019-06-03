@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.views import View
 from .models import productname
 from .forms import MyForm
@@ -6,11 +6,12 @@ from .forms import MyForm
 
 class allproducts(View):
     template_name='methodfolder/methodlist.html'
-    queryset=productname.objects.all()
+
 
     def get(self,request,*args,**kwargs):
         context = {}
-        context['object']=self.queryset
+        queryset = productname.objects.all()
+        context['object']=queryset
         return render(request,self.template_name,context)
 
 
@@ -41,3 +42,58 @@ class createproduct(View):
         context={'form':form}
 
         return render(request,self.template_name,context)
+
+
+class updateproduct(View):
+    template_name='methodfolder/methodupdate.html'
+
+    def get(self,request,*args,**kwargs):
+        context={}
+        _id=self.kwargs.get('id')
+        if _id is not None:
+            obj=get_object_or_404(productname,id=_id)
+        if obj is not None:
+            form=MyForm(instance=obj)
+            context['object']=obj
+            context['form']=form
+        return render(request,self.template_name,context)
+
+    def post(self,request,*args,**kwargs):
+        context={}
+        _id = self.kwargs.get('id')
+        if _id is not None:
+            obj = get_object_or_404(productname, id=_id)
+        form=MyForm(request.POST,instance=obj)
+        if form.is_valid():
+            form.save()
+        context['object']=obj
+        context['form']=form
+
+        return render(request,self.template_name,context)
+
+class deleteproduct(View):
+    template_name='methodfolder/methoddelete.html'
+
+    def get(self,request,*args,**kwargs):
+        id_=self.kwargs.get('id')
+        context = {}
+        if id_ is not None:
+            obj=get_object_or_404(productname,id=id_)
+            context['object']=obj
+        return render(request,self.template_name,context)
+
+    def post(self,request,*args,**kwargs):
+        id_ = self.kwargs.get('id')
+        context = {}
+        if id_ is not None:
+            obj = get_object_or_404(productname, id=id_)
+        if obj is not None:
+            obj.delete()
+            context['object']=None
+            return redirect('/alltitles')
+
+        return render(request,self.template_name,context)
+
+
+
+

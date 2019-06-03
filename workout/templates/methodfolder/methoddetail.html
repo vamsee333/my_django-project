@@ -8,6 +8,11 @@
 </style>
 <p class="p">click on the home to see the other products</p> <br>
 
-your  product title is {{ object.title }}
+your  product title is {{ object.title }} and price is {{ object.price }} <br>
+
+do you want to delete this ? <a href="../../deletetitle/{{object.id}}"> yes</a> <br>
+
+
+do you want to update the product ? <a href="../../updatetitle/{{object.id}}">yes</a>
 
 {% endblock %}

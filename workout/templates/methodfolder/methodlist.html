@@ -8,8 +8,13 @@
 </style>
 <p class="p">click on the home to see the other products</p> <br>
 
+
 {% for x in object %}
- title is {{x.title}}<br>
+
+ title is {{x.title}} -  <a href="../../detailtitle/{{x.id}}"><b>see in detail</b></a><br>
+
+
 {% endfor %}
+
 
 {% endblock %}
