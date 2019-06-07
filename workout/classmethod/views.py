@@ -2,8 +2,11 @@ from django.shortcuts import render,get_object_or_404,redirect
 from django.views import View
 from .models import productname
 from .forms import MyForm
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@method_decorator(login_required,name='dispatch')
 class allproducts(View):
     template_name='methodfolder/methodlist.html'
 

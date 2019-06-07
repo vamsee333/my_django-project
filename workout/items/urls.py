@@ -6,7 +6,7 @@ from items import views
 app_name='items'
 urlpatterns=[
 
-    path('', views.Main_home_page, name='first_view'),
+    path('home/', views.Main_home_page, name='first_view'),
     path('add/', views.Add_item, name='Add_item'),
     path('form/', views.Using_from, name='Form'),
     path('search/', views.raw_form, name='search'),

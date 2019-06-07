@@ -11,9 +11,16 @@
     </style>
 </head>
 <body class="class1">
-
-<h1>Hello <b>{{request.user}}</b></br></h1>
-<a href="../../listview/">Home</a><br>
+<nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <div class="navbar-nav">
+        {% if user.is_authenticated %}
+        <a class="nav-item nav-link" href="{% url 'logout' %}">logout</a>
+        {% else %}
+        <a class="nav-item nav-link" href="{% url 'login' %}">login</a>
+        <a class="nav-item nav-link" href="{% url 'register' %}">register</a>
+        {% endif %}
+     </div>
+</nav>
 <h3><b>welcome to the site - happy shopping</b></h3>
 
 {% block content %}
